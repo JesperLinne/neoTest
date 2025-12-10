@@ -1,5 +1,6 @@
-import { Checkbox } from "@neo4j-ndl/react"
 import "./index.css"
+
+import { Checkbox } from "@neo4j-ndl/react"
 
 interface Props {
   opts: {
