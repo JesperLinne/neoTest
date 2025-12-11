@@ -1,5 +1,6 @@
 import { describe, test, expect } from "vitest"
-import { generatePassword, CHARSET } from "./GeneratePassword"
+import { generatePassword } from "../utils/GeneratePassword"
+import { CHARSET } from "../utils/constants"
 
 describe("generatePassword", () => {
   test("returns a password with correct length", () => {
@@ -33,13 +34,13 @@ describe("generatePassword", () => {
 })
 
 test("only uses characters from CHARSET", () => {
-  const pw = generatePassword(10, {
+  const passwordTypes = generatePassword(10, {
     upper: true,
     lower: true,
     symbols: true,
   })
 
-  for (const char of pw) {
+  for (const char of passwordTypes) {
     expect(CHARSET.includes(char)).toBe(true)
   }
 })

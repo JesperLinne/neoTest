@@ -6,30 +6,29 @@ import { MagnifyingGlassIconOutline } from '@neo4j-ndl/react/icons'
 
 import { useState } from 'react'
 
-import Slider from './Slider'
-import CheckboxOptions from './CheckboxOptions'
-import { generatePassword } from './GeneratePassword'
-
-type OptionKey = "upper" | "lower" | "symbols"
+import Slider from './components/Slider'
+import CheckboxOptions from './components/CheckboxOptions'
+import { generatePassword } from './utils/GeneratePassword'
+import type { OptionKey } from './utils/types'
 
 const App = () => {
   const [password, setPassword] = useState("")
   const [length, setLength] = useState(5)
-  const [opts, setOpts] = useState({
+  const [options, setOptions] = useState({
     upper: true,
     lower: true,
     symbols: false,
   })
 
-  const updateOpt = (key: OptionKey) => {
-    setOpts(prev => ({
+  const onHandleCheckboxChange = (key: OptionKey) => {
+    setOptions(prev => ({
       ...prev,
       [key]: !prev[key],
     }))
   }
 
   const handleGenerate = () =>
-    setPassword(generatePassword(length, opts))
+    setPassword(generatePassword(length, options))
 
   const handleCopy = () =>
     navigator.clipboard.writeText(password)
@@ -60,7 +59,7 @@ const App = () => {
           label="Character length"
         />
 
-        <CheckboxOptions opts={opts} onToggle={updateOpt} />
+        <CheckboxOptions options={options} onHandleCheckboxChange={onHandleCheckboxChange} />
 
         <FilledButton className="generate-btn" variant="primary" onClick={handleGenerate}>
           Generate
