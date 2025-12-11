@@ -3,32 +3,32 @@ import "./index.css"
 import { Checkbox } from "@neo4j-ndl/react"
 
 interface Props {
-  opts: {
+  options: {
     upper: boolean
     lower: boolean
     symbols: boolean
   }
-  onToggle: (key: "upper" | "lower" | "symbols") => void
+  onHandleCheckboxChange: (key: "upper" | "lower" | "symbols") => void
 }
 
-const CheckboxOptions = ({ opts, onToggle }: Props) => {
+const CheckboxOptions = ({ options, onHandleCheckboxChange }: Props) => {
   return (
     <div className="checkbox-group">
       <Checkbox
-        isChecked={opts.upper}
-        onChange={() => onToggle("upper")}
+        isChecked={options.upper}
+        onChange={() => onHandleCheckboxChange("upper")}
         label="Include uppercase letters"
       />
 
       <Checkbox
-        isChecked={opts.lower}
-        onChange={() => onToggle("lower")}
+        isChecked={options.lower}
+        onChange={() => onHandleCheckboxChange("lower")}
         label="Include lowercase letters"
       />
 
       <Checkbox
-        isChecked={opts.symbols}
-        onChange={() => onToggle("symbols")}
+        isChecked={options.symbols}
+        onChange={() => onHandleCheckboxChange("symbols")}
         label="Include symbols"
       />
     </div>

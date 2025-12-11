@@ -1,6 +1,6 @@
 import { test, describe, expect, vi } from "vitest"
 import { render, screen, fireEvent } from "@testing-library/react"
-import Slider from "./Slider"
+import Slider from "../components/Slider"
 
 describe("Slider", () => {
   test("renders the slider with the correct value", () => {

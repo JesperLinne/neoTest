@@ -1,13 +1,13 @@
 import { describe, test, expect, vi } from "vitest"
 import { render, screen, fireEvent } from "@testing-library/react"
-import CheckboxOptions from "./CheckboxOptions"
+import CheckboxOptions from "../components/CheckboxOptions"
 
 describe("CheckboxOptions", () => {
   test("renders all three checkboxes", () => {
     render(
       <CheckboxOptions
-        opts={{ upper: true, lower: false, symbols: true }}
-        onToggle={() => {}}
+        options={{ upper: true, lower: false, symbols: true }}
+        onHandleCheckboxChange={() => {}}
       />
     )
 
@@ -19,8 +19,8 @@ describe("CheckboxOptions", () => {
   test("checkboxes reflect the correct checked state", () => {
     render(
       <CheckboxOptions
-        opts={{ upper: true, lower: false, symbols: true }}
-        onToggle={() => {}}
+        options={{ upper: true, lower: false, symbols: true }}
+        onHandleCheckboxChange={() => {}}
       />
     )
 
@@ -30,50 +30,50 @@ describe("CheckboxOptions", () => {
   })
 
   test("calls onToggle with 'upper' when upper checkbox is clicked", () => {
-    const onToggle = vi.fn()
+    const onHandleCheckboxChange = vi.fn()
 
     render(
       <CheckboxOptions
-        opts={{ upper: false, lower: false, symbols: false }}
-        onToggle={onToggle}
+        options={{ upper: false, lower: false, symbols: false }}
+        onHandleCheckboxChange={onHandleCheckboxChange}
       />
     )
 
     const upper = screen.getByLabelText("Include uppercase letters")
     fireEvent.click(upper)
 
-    expect(onToggle).toHaveBeenCalledWith("upper")
+    expect(onHandleCheckboxChange).toHaveBeenCalledWith("upper")
   })
 
   test("calls onToggle with 'lower' when lower checkbox is clicked", () => {
-    const onToggle = vi.fn()
+    const onHandleCheckboxChange = vi.fn()
 
     render(
       <CheckboxOptions
-        opts={{ upper: false, lower: false, symbols: false }}
-        onToggle={onToggle}
+        options={{ upper: false, lower: false, symbols: false }}
+        onHandleCheckboxChange={onHandleCheckboxChange}
       />
     )
 
     const lower = screen.getByLabelText("Include lowercase letters")
     fireEvent.click(lower)
 
-    expect(onToggle).toHaveBeenCalledWith("lower")
+    expect(onHandleCheckboxChange).toHaveBeenCalledWith("lower")
   })
 
   test("calls onToggle with 'symbols' when symbols checkbox is clicked", () => {
-    const onToggle = vi.fn()
+    const onHandleCheckboxChange = vi.fn()
 
     render(
       <CheckboxOptions
-        opts={{ upper: false, lower: false, symbols: false }}
-        onToggle={onToggle}
+        options={{ upper: false, lower: false, symbols: false }}
+        onHandleCheckboxChange={onHandleCheckboxChange}
       />
     )
 
     const symbols = screen.getByLabelText("Include symbols")
     fireEvent.click(symbols)
 
-    expect(onToggle).toHaveBeenCalledWith("symbols")
+    expect(onHandleCheckboxChange).toHaveBeenCalledWith("symbols")
   })
 })
