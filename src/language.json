@@ -1,0 +1,12 @@
+{
+  "title": "Password Generator",
+  "generatedPasswordLabel": "Generated password",
+  "copyPassword": "Copy password",
+  "characterLength": "Character length",
+  "generateButton": "Generate",
+  "checkbox": {
+    "upper": "Include uppercase letters",
+    "lower": "Include lowercase letters",
+    "symbols": "Include symbols"
+  }
+}
