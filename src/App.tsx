@@ -41,24 +41,37 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="card">
-        <Typography variant="body-medium" className="title">
+        <Typography variant="body-medium" className="title" data-testid="title">
           {t('title')}
         </Typography>
-
         <TextInput
+          data-testid="password-input"
           label={t('generatedPasswordLabel')}
           value={password}
           className="text-input"
           onChange={(e) => setPassword(e.target.value)}
           trailingElement={
-            <CleanIconButton onClick={() => copy(password)} description={t('copyPassword')}>
+            <CleanIconButton
+              data-testid="copy-button"
+              onClick={() => copy(password)}
+              description={t('copyPassword')}
+            >
               <Square2StackIconOutline />
             </CleanIconButton>
           }
         />
+
         <Slider max={10} value={length} onChange={setLength} label={t('characterLength')} />
-        <CheckboxOptions options={options} onHandleCheckboxChange={onHandleCheckboxChange} />
-        <FilledButton className="generate-btn" variant="primary" onClick={handleGenerate}>
+
+        <div data-testid="checkbox-group">
+          <CheckboxOptions options={options} onHandleCheckboxChange={onHandleCheckboxChange} />
+        </div>
+        <FilledButton
+          data-testid="generate-button"
+          className="generate-btn"
+          variant="primary"
+          onClick={handleGenerate}
+        >
           {t('generateButton')}
         </FilledButton>
       </div>
