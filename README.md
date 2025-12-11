@@ -27,4 +27,8 @@ npm run dev
 
 ## Testing
 
-npm run test
+To test the JEST test:
+npm test
+
+To test the playwright test:
+npx playwright test

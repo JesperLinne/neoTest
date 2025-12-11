@@ -9,13 +9,20 @@ interface SliderProps {
 
 const Slider = ({ max, value, onChange, label }: SliderProps) => {
   return (
-    <div className="slider-container">
+    <div className="slider-container" data-testid="slider">
       <div className="slider-top">
-        {label && <div className="slider-label">{label}</div>}
-        <span className="slider-value">{value}</span>
+        {label && (
+          <div className="slider-label" data-testid="slider-label">
+            {label}
+          </div>
+        )}
+        <span className="slider-value" data-testid="slider-value">
+          {value}
+        </span>
       </div>
 
       <input
+        data-testid="slider-input"
         className="clean-slider"
         type="range"
         min={0}
