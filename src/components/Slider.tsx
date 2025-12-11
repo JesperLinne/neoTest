@@ -1,4 +1,4 @@
-import "./index.css"
+import "../styles/Slider.css"
 
 interface SliderProps {
   max: number

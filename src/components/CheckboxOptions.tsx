@@ -1,6 +1,8 @@
-import "./index.css"
+import "../styles/CheckboxOptions.css"
 
 import { Checkbox } from "@neo4j-ndl/react"
+
+import { useTranslation } from "react-i18next"
 
 interface Props {
   options: {
@@ -12,24 +14,24 @@ interface Props {
 }
 
 const CheckboxOptions = ({ options, onHandleCheckboxChange }: Props) => {
+  const { t } = useTranslation()
+
   return (
     <div className="checkbox-group">
       <Checkbox
         isChecked={options.upper}
         onChange={() => onHandleCheckboxChange("upper")}
-        label="Include uppercase letters"
+        label={t("checkbox.upper")}
       />
-
       <Checkbox
         isChecked={options.lower}
         onChange={() => onHandleCheckboxChange("lower")}
-        label="Include lowercase letters"
+        label={t("checkbox.lower")}
       />
-
       <Checkbox
         isChecked={options.symbols}
         onChange={() => onHandleCheckboxChange("symbols")}
-        label="Include symbols"
+        label={t("checkbox.symbols")}
       />
     </div>
   )
