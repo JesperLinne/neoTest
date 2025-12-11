@@ -1,13 +1,12 @@
-import { CHARSET } from "./constants";
+import { CHARSET } from './constants'
 
 const filterChars = (pattern: RegExp): ReadonlyArray<string> =>
-  CHARSET.split("").filter(char => pattern.test(char))
+  CHARSET.split('').filter((char) => pattern.test(char))
 
 export const generatePassword = (
   length: number,
-  options: { upper: boolean; lower: boolean; symbols: boolean }
+  options: { upper: boolean; lower: boolean; symbols: boolean },
 ): string => {
-
   const groups: ReadonlyArray<ReadonlyArray<string>> = [
     options.upper ? filterChars(/[A-Z]/) : [],
     options.lower ? filterChars(/[a-z]/) : [],
@@ -16,10 +15,10 @@ export const generatePassword = (
 
   const passwordGroup = groups.flat()
 
-  if (passwordGroup.length === 0) return ""
+  if (passwordGroup.length === 0) return ''
 
   return Array.from({ length }, () => {
     const index = Math.floor(Math.random() * passwordGroup.length)
     return passwordGroup[index]
-  }).join("")
+  }).join('')
 }

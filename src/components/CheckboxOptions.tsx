@@ -1,8 +1,8 @@
-import "../styles/CheckboxOptions.css"
+import '../styles/CheckboxOptions.css'
 
-import { Checkbox } from "@neo4j-ndl/react"
+import { Checkbox } from '@neo4j-ndl/react'
 
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   options: {
@@ -10,7 +10,7 @@ interface Props {
     lower: boolean
     symbols: boolean
   }
-  onHandleCheckboxChange: (key: "upper" | "lower" | "symbols") => void
+  onHandleCheckboxChange: (key: 'upper' | 'lower' | 'symbols') => void
 }
 
 const CheckboxOptions = ({ options, onHandleCheckboxChange }: Props) => {
@@ -20,18 +20,18 @@ const CheckboxOptions = ({ options, onHandleCheckboxChange }: Props) => {
     <div className="checkbox-group">
       <Checkbox
         isChecked={options.upper}
-        onChange={() => onHandleCheckboxChange("upper")}
-        label={t("checkbox.upper")}
+        onChange={() => onHandleCheckboxChange('upper')}
+        label={t('checkbox.upper')}
       />
       <Checkbox
         isChecked={options.lower}
-        onChange={() => onHandleCheckboxChange("lower")}
-        label={t("checkbox.lower")}
+        onChange={() => onHandleCheckboxChange('lower')}
+        label={t('checkbox.lower')}
       />
       <Checkbox
         isChecked={options.symbols}
-        onChange={() => onHandleCheckboxChange("symbols")}
-        label={t("checkbox.symbols")}
+        onChange={() => onHandleCheckboxChange('symbols')}
+        label={t('checkbox.symbols')}
       />
     </div>
   )
