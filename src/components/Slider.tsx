@@ -2,12 +2,13 @@ import '../styles/Slider.css'
 
 interface SliderProps {
   max: number
+  min: number
   value: number
   onChange: (value: number) => void
   label?: string
 }
 
-const Slider = ({ max, value, onChange, label }: SliderProps) => {
+const Slider = ({ max, min, value, onChange, label }: SliderProps) => {
   return (
     <div className="slider-container" data-testid="slider">
       <div className="slider-top">
@@ -25,7 +26,7 @@ const Slider = ({ max, value, onChange, label }: SliderProps) => {
         data-testid="slider-input"
         className="clean-slider"
         type="range"
-        min={0}
+        min={min}
         max={max}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
