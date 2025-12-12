@@ -1,4 +1,4 @@
-import './index.css'
+import './styles/index.css'
 
 import '@neo4j-ndl/base/lib/neo4j-ds-styles.css'
 import {
@@ -17,12 +17,17 @@ import Slider from './components/Slider'
 import CheckboxOptions from './components/CheckboxOptions'
 import { generatePassword } from './utils/GeneratePassword'
 import type { OptionKey } from './utils/types'
+import {
+  DEFAULT_PASSWORD_LENGTH,
+  MAX_PASSWORD_LENGTH,
+  MIN_PASSWORD_LENGTH,
+} from './utils/constants'
 
 const App = () => {
   const { t } = useTranslation()
   const [password, setPassword] = useState('')
   const [, copy] = useCopyToClipboard()
-  const [length, setLength] = useState(5)
+  const [length, setLength] = useState(DEFAULT_PASSWORD_LENGTH)
   const [options, setOptions] = useState({
     upper: true,
     lower: true,
@@ -61,7 +66,13 @@ const App = () => {
           }
         />
 
-        <Slider max={10} value={length} onChange={setLength} label={t('characterLength')} />
+        <Slider
+          max={MAX_PASSWORD_LENGTH}
+          min={MIN_PASSWORD_LENGTH}
+          value={length}
+          onChange={setLength}
+          label={t('characterLength')}
+        />
 
         <div data-testid="checkbox-group">
           <CheckboxOptions options={options} onHandleCheckboxChange={onHandleCheckboxChange} />

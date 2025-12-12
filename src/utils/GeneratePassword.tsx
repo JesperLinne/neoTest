@@ -1,12 +1,10 @@
 import { CHARSET } from './constants'
+import type { PasswordOptions } from './types'
 
 const filterChars = (pattern: RegExp): ReadonlyArray<string> =>
   CHARSET.split('').filter((char) => pattern.test(char))
 
-export const generatePassword = (
-  length: number,
-  options: { upper: boolean; lower: boolean; symbols: boolean },
-): string => {
+export const generatePassword = (length: number, options: PasswordOptions): string => {
   const groups: ReadonlyArray<ReadonlyArray<string>> = [
     options.upper ? filterChars(/[A-Z]/) : [],
     options.lower ? filterChars(/[a-z]/) : [],
